@@ -1,7 +1,22 @@
 import { PrototypeNavTabs } from "../src/components/prototype-nav-tabs";
 import { SimpleAssetsShowcase } from "../src/components/simple-assets-showcase";
-import { StackDirectionPanel } from "../src/components/stack-direction-panel";
-import { VisualPillarsPanel } from "../src/components/visual-pillars-panel";
+import { TopicsInList } from "../src/components/topics-in-list";
+import { TopicsInSquares } from "../src/components/topics-in-squares";
+
+const stackTopics = [
+  "Next.js 16 App Router",
+  "Tailwind CSS v4",
+  "Docker standalone build",
+  "Vercel deployment",
+  "MongoDB Atlas integration"
+];
+
+const visualTopics = [
+  "Core purple structural framing",
+  "Punk-red text emphasis",
+  "Selective cyan word highlights",
+  "Mono-forward technical typography"
+];
 
 export default function Home() {
   return (
@@ -28,8 +43,12 @@ export default function Home() {
           homePanel={
             <div className="space-y-6">
               <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
-                <StackDirectionPanel />
-                <VisualPillarsPanel />
+                <TopicsInSquares
+                  note="Locked for Day 1"
+                  title="Stack direction"
+                  topics={stackTopics}
+                />
+                <TopicsInList title="Visual pillars" topics={visualTopics} />
               </div>
 
               <article className="panel-cut max-w-4xl">

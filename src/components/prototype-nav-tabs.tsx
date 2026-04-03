@@ -30,7 +30,7 @@ export function PrototypeNavTabs({
 
   return (
     <section className="panel-cut space-y-5">
-      <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <div className="space-y-4">
         <div className="space-y-2">
           <p className="text-xs uppercase tracking-[0.28em] text-[var(--color-accent)]">
             Day 2 prototype navigation
@@ -47,7 +47,7 @@ export function PrototypeNavTabs({
 
         <div
           aria-label="Prototype sections"
-          className="inline-flex w-fit flex-wrap gap-2"
+          className="flex w-full flex-wrap items-stretch gap-2 border border-[var(--color-accent)]/35 bg-[rgba(10,3,14,0.85)] p-2"
           role="tablist"
         >
           {tabs.map((tab) => {
@@ -59,7 +59,7 @@ export function PrototypeNavTabs({
                 aria-controls={`${tab.id}-panel`}
                 aria-selected={isActive}
                 className={[
-                  "min-w-40 border px-4 py-3 text-left transition-colors",
+                  "flex-1 border px-4 py-3 text-left transition-colors",
                   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-cyan)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)]",
                   isActive
                     ? "border-[var(--color-cyan)] bg-[rgba(13,205,205,0.1)] text-[var(--color-heading)] shadow-[0_0_22px_rgba(13,205,205,0.16)]"
@@ -70,7 +70,7 @@ export function PrototypeNavTabs({
                 role="tab"
                 type="button"
               >
-                <span className="block text-xs uppercase tracking-[0.28em] text-[var(--color-cyan)]">
+                <span className="block text-xs uppercase tracking-[0.32em] text-[var(--color-cyan)]">
                   {tab.label}
                 </span>
                 <span className="mt-2 block text-[11px] uppercase tracking-[0.18em] text-current/80">
