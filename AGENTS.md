@@ -43,9 +43,12 @@ This repository is a Next.js 16 App Router sandbox used to define and test the c
 - Interaction mood: precise, tactical, slightly arcade-like; transitions should feel fast and deliberate, not soft or playful
 
 ## AI Style Reference
-- Use [docs/ai-style-guidelines.md](/docs/ai-style-guidelines.md) as the canonical source for palette and typography details when generating or editing UI.
-- Treat the current light heading tone used by the main page title as the default title pattern for future headings and hero titles.
-- If this file and inline guidance diverge, prefer `docs/ai-style-guidelines.md` and update the repository docs together.
+- When generating or editing UI, use [docs/ai-style-guidelines.md](/docs/ai-style-guidelines.md) as the canonical source for palette and typography details.
+- When writing hero titles or headings, treat the current light heading tone used by the main page title as the default pattern.
+- Before creating any components, decide between server-side and client-side based on [docs/server-side-or-client-side.md](/docs/server-side-or-client-side.md).
+- When creating server-side components, follow the guidelines at [docs/server-side-components-guidelines.md](/docs/server-side-components-guidelines.md).
+- When creating client-side components, follow the guidelines at [docs/client-side-components-guidelines.md](/docs/client-side-components-guidelines.md).
+- If this file and inline guidance diverge, ask for human guidance in the prompt.
 
 ## Commands
 - `npm install` to install dependencies
