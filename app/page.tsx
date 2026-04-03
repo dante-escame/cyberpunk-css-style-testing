@@ -1,3 +1,5 @@
+import { PrototypeNavTabs } from "../src/components/prototype-nav-tabs";
+import { SimpleAssetsShowcase } from "../src/components/simple-assets-showcase";
 import { StackDirectionPanel } from "../src/components/stack-direction-panel";
 import { VisualPillarsPanel } from "../src/components/visual-pillars-panel";
 
@@ -22,25 +24,32 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
-          <StackDirectionPanel />
-          <VisualPillarsPanel />
-        </div>
+        <PrototypeNavTabs
+          homePanel={
+            <div className="space-y-6">
+              <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+                <StackDirectionPanel />
+                <VisualPillarsPanel />
+              </div>
 
-        <article className="panel-cut max-w-4xl">
-          <p className="text-xs uppercase tracking-[0.28em] text-[var(--color-accent)]">
-            Active palette
-          </p>
-          <p className="mt-4 text-sm leading-7 text-[var(--color-text)] md:text-base">
-            The current sandbox uses{" "}
-            <span className="text-[var(--color-cyan)]">#800080</span> for
-            structural glow and borders,{" "}
-            <span className="text-[var(--color-cyan)]">#df024a</span> as the
-            dominant punk text color, and{" "}
-            <span className="text-[var(--color-cyan)]">#0dcdcd</span> for
-            selective highlight words and indicator accents.
-          </p>
-        </article>
+              <article className="panel-cut max-w-4xl">
+                <p className="text-xs uppercase tracking-[0.28em] text-[var(--color-accent)]">
+                  Active palette
+                </p>
+                <p className="mt-4 text-sm leading-7 text-[var(--color-text)] md:text-base">
+                  The current sandbox uses{" "}
+                  <span className="text-[var(--color-cyan)]">#800080</span> for
+                  structural glow and borders,{" "}
+                  <span className="text-[var(--color-cyan)]">#df024a</span> as
+                  the dominant punk text color, and{" "}
+                  <span className="text-[var(--color-cyan)]">#0dcdcd</span> for
+                  selective highlight words and indicator accents.
+                </p>
+              </article>
+            </div>
+          }
+          simpleAssetsPanel={<SimpleAssetsShowcase />}
+        />
       </section>
     </main>
   );
