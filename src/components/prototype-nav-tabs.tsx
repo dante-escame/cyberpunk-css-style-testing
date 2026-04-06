@@ -1,11 +1,12 @@
 import Link from "next/link";
 
-type TabId = "home" | "simple-assets";
+type TabId = "home" | "simple-assets" | "text-patterns";
 
 type PrototypeNavTabsProps = {
   activeTab: TabId;
   homePanel: React.ReactNode;
   simpleAssetsPanel: React.ReactNode;
+  textPatternsPanel: React.ReactNode;
 };
 
 const tabs: Array<{ id: TabId; label: string; hint: string }> = [
@@ -18,13 +19,19 @@ const tabs: Array<{ id: TabId; label: string; hint: string }> = [
     id: "simple-assets",
     label: "Simple Assets",
     hint: "Server-rendered token lab"
+  },
+  {
+    id: "text-patterns",
+    label: "Text Patterns",
+    hint: "Content typography test"
   }
 ];
 
 export function PrototypeNavTabs({
   activeTab,
   homePanel,
-  simpleAssetsPanel
+  simpleAssetsPanel,
+  textPatternsPanel
 }: PrototypeNavTabsProps) {
   return (
     <section className="panel-cut space-y-5">
@@ -76,7 +83,11 @@ export function PrototypeNavTabs({
         id={`${activeTab}-panel`}
         role="tabpanel"
       >
-        {activeTab === "home" ? homePanel : simpleAssetsPanel}
+        {activeTab === "home"
+          ? homePanel
+          : activeTab === "simple-assets"
+            ? simpleAssetsPanel
+            : textPatternsPanel}
       </div>
     </section>
   );

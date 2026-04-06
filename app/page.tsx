@@ -1,5 +1,6 @@
 import { PrototypeNavTabs } from "../src/components/prototype-nav-tabs";
 import { SimpleAssetsShowcase } from "../src/components/simple-assets-showcase";
+import { TextPatternsShowcase } from "../src/components/text-patterns-showcase";
 import { TopicsInList } from "../src/components/topics-in-list";
 import { TopicsInSquares } from "../src/components/topics-in-squares";
 
@@ -24,9 +25,11 @@ export default async function Home({
   searchParams: Promise<{ tab?: string }>;
 }) {
   const { tab } = await searchParams;
-  const activeTab = (tab === "simple-assets" ? "simple-assets" : "home") as
-    | "home"
-    | "simple-assets";
+  const activeTab = (tab === "simple-assets"
+    ? "simple-assets"
+    : tab === "text-patterns"
+      ? "text-patterns"
+      : "home") as "home" | "simple-assets" | "text-patterns";
 
   return (
     <main className="min-h-screen text-(--color-text)">
@@ -77,6 +80,7 @@ export default async function Home({
               </div>
             }
             simpleAssetsPanel={<SimpleAssetsShowcase />}
+            textPatternsPanel={<TextPatternsShowcase />}
           />
         </div>
       </section>

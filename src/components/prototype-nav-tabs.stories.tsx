@@ -30,7 +30,11 @@ export const HomeTab: Story = {
     ),
     simpleAssetsPanel: panelContent(
       "Simple Assets",
-      "Token previews, palettes, and design notes live in this panel. Swap between tabs without losing focus on the surrounding frame."
+      "Token previews, palettes, and design notes live in this panel."
+    ),
+    textPatternsPanel: panelContent(
+      "Text Patterns",
+      "Focused typography lab for testing headings, paragraphs, and readability."
     )
   }
 };
@@ -44,7 +48,29 @@ export const SimpleAssetsTab: Story = {
     ),
     simpleAssetsPanel: panelContent(
       "Simple Assets",
-      "Token previews, palettes, and design notes live in this panel. Swap between tabs without losing focus on the surrounding frame."
+      "Token previews, palettes, and design notes live in this panel."
+    ),
+    textPatternsPanel: panelContent(
+      "Text Patterns",
+      "Focused typography lab for testing headings, paragraphs, and readability."
+    )
+  }
+};
+
+export const TextPatternsTab: Story = {
+  args: {
+    activeTab: "text-patterns",
+    homePanel: panelContent(
+      "Day 2 Home Panel",
+      "This server-rendered panel mirrors the home tab in the app."
+    ),
+    simpleAssetsPanel: panelContent(
+      "Simple Assets",
+      "Token previews, palettes, and design notes live in this panel."
+    ),
+    textPatternsPanel: panelContent(
+      "Text Patterns",
+      "This panel renders typography tests, ensuring the cyberpunk palette stays readable in longer copy formats."
     )
   }
 };
