@@ -43,12 +43,17 @@ This repository is a Next.js 16 App Router sandbox used to define and test the c
 - Interaction mood: precise, tactical, slightly arcade-like; transitions should feel fast and deliberate, not soft or playful
 
 ## AI Style Reference
-- Use [docs/ai-style-guidelines.md](/docs/ai-style-guidelines.md) as the canonical source for palette and typography details when generating or editing UI.
-- Treat the current light heading tone used by the main page title as the default title pattern for future headings and hero titles.
-- Before creating any components, decide beetween server-side and client-side based on [docs/server-side-or-client-side.md](/docs/server-side-or-client-side.md).
+- When generating or editing UI, use [docs/ai-style-guidelines.md](/docs/ai-style-guidelines.md) as the canonical source for palette and typography details.
+- When writing hero titles or headings, treat the current light heading tone used by the main page title as the default pattern.
+- Before creating any components, decide between server-side and client-side based on [docs/server-side-or-client-side.md](/docs/server-side-or-client-side.md).
 - When creating server-side components, follow the guidelines at [docs/server-side-components-guidelines.md](/docs/server-side-components-guidelines.md).
 - When creating client-side components, follow the guidelines at [docs/client-side-components-guidelines.md](/docs/client-side-components-guidelines.md).
-- If this file and inline guidance diverge, prefer `docs/ai-style-guidelines.md` and update the repository docs together.
+- When documenting new components (just do it when prompted manually), [docs/storybooking-components-guidelines.md](/docs/storybooking-components-guidelines.md) use as component documentation guidelines.
+- If this file and inline guidance diverge, ask for human guidance in the prompt.
+
+## AI Commands
+- Custom AI command phrase: `check component docs`
+- Expected behavior: review newly created or changed reusable components, verify whether matching Storybook stories exist, and if they do not, create or update concise component documentation before finishing the task.
 
 ## Commands
 - `npm install` to install dependencies
@@ -58,5 +63,5 @@ This repository is a Next.js 16 App Router sandbox used to define and test the c
 
 ## Delivery Notes
 - Keep top-level clutter low. Add new root files only when they support tooling, deployment, or project governance.
-- Update `README.md`, `AGENTS.md`, and `CLAUDE.MD` together when architecture or workflow decisions materially change.
+- Update `README.md`, `AGENTS.md`, `GEMINI.md` and `CLAUDE.md` together when architecture or workflow decisions materially change.
 - Do not commit secrets. Store runtime configuration in ignored environment files such as `.env.local`.

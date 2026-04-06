@@ -5,12 +5,10 @@ This repository is the style sandbox for a portfolio website. It defines the Day
 This is a style playground, not the final portfolio. The current page exists to validate visual direction and stack decisions before moving into design tokens, component experiments, and reusable UI primitives.
 
 ## Day 1 Deliverables
-- Next.js 16 sandbox initialized in-place
-- App Router selected as the only routing architecture
-- Tailwind CSS v4 selected as the styling approach
-- Docker multi-stage build configured around `output: 'standalone'`
-- Documentation aligned in `README.md`, `AGENTS.md`, and `CLAUDE.md`
-- Initial cyberpunk style baseline implemented in the starter page
+Day 1 established the baseline: a Next.js 16 App Router sandbox with Tailwind CSS v4, Docker standalone builds, aligned project docs, and an initial cyberpunk starter page to validate stack and visual direction.
+
+## Day 2 Deliverables
+Day 2 added the first reusable UI prototype layer: Storybook support, `PrototypeNavTabs`, and a live home-plus-assets panel flow to test server-first composition, interaction framing, and component documentation workflow.
 
 ## Chosen Stack
 - Next.js 16
@@ -41,6 +39,14 @@ Planned structure:
 | Candidate | Reason |
 | --- | --- |
 | Tailwind CSS v4 | Fast iteration, strong utility ergonomics, easy token layering with CSS variables, works well for experimental UI systems |
+
+## Documentation
+- Component docs: Storybook is the default documentation approach for reusable UI components.
+- Storybook runs from `npm run storybook` and renders the `PrototypeNavTabs` story, showing how the server-first tab shell behaves with live panel previews while the rest of the page stays server-rendered.
+
+## Storybook
+- Entry point: `npm run storybook` (opens `http://localhost:6006`).
+- The `PrototypeNavTabs` story in `src/components/prototype-nav-tabs.stories.tsx` demonstrates the Day 2 prototype tabs, including the home overview panel and the simple assets token lab panel rendered inside the live Storybook frame.
 
 ## Cyberpunk Visual Direction
 - Palette: purple-led surfaces with punk-red emphasis and selective cyan highlights
