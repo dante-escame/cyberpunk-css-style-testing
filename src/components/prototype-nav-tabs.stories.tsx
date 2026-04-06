@@ -21,8 +21,23 @@ const panelContent = (heading: string, body: string) => (
 
 type Story = StoryObj<typeof PrototypeNavTabs>;
 
-export const Default: Story = {
+export const HomeTab: Story = {
   args: {
+    activeTab: "home",
+    homePanel: panelContent(
+      "Day 2 Home Panel",
+      "This server-rendered panel mirrors the home tab in the app and keeps the layout consistent while the tabs stay interactive."
+    ),
+    simpleAssetsPanel: panelContent(
+      "Simple Assets",
+      "Token previews, palettes, and design notes live in this panel. Swap between tabs without losing focus on the surrounding frame."
+    )
+  }
+};
+
+export const SimpleAssetsTab: Story = {
+  args: {
+    activeTab: "simple-assets",
     homePanel: panelContent(
       "Day 2 Home Panel",
       "This server-rendered panel mirrors the home tab in the app and keeps the layout consistent while the tabs stay interactive."

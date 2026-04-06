@@ -576,7 +576,7 @@
 <header>
   <div class="wrap">
     <h1>Manifest Debugger</h1>
-    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><span class="filter-pill ok" aria-disabled="true">1 components ok</span><a class="filter-pill info" data-k="infos" href="#filter-infos">1/1 info</a><span class="filter-pill ok" aria-disabled="true">1 story ok</span></div>
+    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><span class="filter-pill ok" aria-disabled="true">1 components ok</span><a class="filter-pill info" data-k="infos" href="#filter-infos">1/1 info</a><span class="filter-pill ok" aria-disabled="true">2 stories ok</span></div>
   </div>
 </header>
 <main>
@@ -604,9 +604,9 @@
     <div class="title">
       <h2><span class="status-dot dot-ok"></span> PrototypeNavTabs</h2>
       <div class="badges">
-        <label for="c-0-components-prototypenavtabs-props" class="badge ok as-toggle">2 prop types</label>
+        <label for="c-0-components-prototypenavtabs-props" class="badge ok as-toggle">3 prop types</label>
         <label for="c-0-components-prototypenavtabs-info" class="badge info as-toggle">1 info</label>
-        <label for="c-0-components-prototypenavtabs-stories" class="badge ok as-toggle">1 story</label>
+        <label for="c-0-components-prototypenavtabs-stories" class="badge ok as-toggle">2 stories</label>
         
       </div>
     </div>
@@ -638,11 +638,13 @@
           <div class="note ok">
             <div class="row">
               <span class="ex-name">Prop types <small>(react-docgen)</small></span>
-              <span class="badge ok">2 prop types</span>
+              <span class="badge ok">3 prop types</span>
             </div>
             <pre><code>Component: src/components/prototype-nav-tabs.tsx::PrototypeNavTabs</code></pre>
             <pre><code>Props:</code></pre>
-            <pre><code>homePanel: React.ReactNode
+            <pre><code>activeTab: &quot;home&quot; | &quot;simple-assets&quot;
+
+homePanel: React.ReactNode
 
 simpleAssetsPanel: React.ReactNode</code></pre>
           </div>
@@ -662,12 +664,31 @@ simpleAssetsPanel: React.ReactNode</code></pre>
           
             <div class="note ok">
               <div class="row">
-                <span class="ex-name">Default</span>
+                <span class="ex-name">Home Tab</span>
                 <span class="badge ok">story ok</span>
               </div>
               
               
-              <pre><code>const Default = () =&gt; &lt;PrototypeNavTabs
+              <pre><code>const HomeTab = () =&gt; &lt;PrototypeNavTabs
+    activeTab=&quot;home&quot;
+    homePanel={panelContent(
+      &quot;Day 2 Home Panel&quot;,
+      &quot;This server-rendered panel mirrors the home tab in the app and keeps the layout consistent while the tabs stay interactive.&quot;
+    )}
+    simpleAssetsPanel={panelContent(
+      &quot;Simple Assets&quot;,
+      &quot;Token previews, palettes, and design notes live in this panel. Swap between tabs without losing focus on the surrounding frame.&quot;
+    )} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Simple Assets Tab</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const SimpleAssetsTab = () =&gt; &lt;PrototypeNavTabs
+    activeTab=&quot;simple-assets&quot;
     homePanel={panelContent(
       &quot;Day 2 Home Panel&quot;,
       &quot;This server-rendered panel mirrors the home tab in the app and keeps the layout consistent while the tabs stay interactive.&quot;

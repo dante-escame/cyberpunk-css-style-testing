@@ -18,7 +18,16 @@ const visualTopics = [
   "Mono-forward technical typography"
 ];
 
-export default function Home() {
+export default async function Home({
+  searchParams
+}: {
+  searchParams: Promise<{ tab?: string }>;
+}) {
+  const { tab } = await searchParams;
+  const activeTab = (tab === "simple-assets" ? "simple-assets" : "home") as
+    | "home"
+    | "simple-assets";
+
   return (
     <main className="min-h-screen text-(--color-text)">
       <section className="mx-auto flex min-h-screen w-full max-w-6xl flex-col justify-center gap-10 px-6 py-20 md:px-10">
@@ -27,7 +36,7 @@ export default function Home() {
             Day2Day Setup
           </p>
           <h1 className="max-w-4xl text-5xl font-black uppercase tracking-[0.08em] text-(--color-heading) md:text-7xl">
-            Cyberpunk style test sandbox
+            Cyberpunk Visuals
           </h1>
           <p className="max-w-3xl text-base leading-7 text-(--color-text) md:text-lg">
             The repository is now aligned around{" "}
@@ -37,38 +46,39 @@ export default function Home() {
             and a first-pass purple punk cyberpunk design system for future
             portfolio experiments.
           </p>
-        </div>
 
-        <PrototypeNavTabs
-          homePanel={
-            <div className="space-y-6">
-              <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
-                <TopicsInSquares
-                  note="Locked for Day 1"
-                  title="Stack direction"
-                  topics={stackTopics}
-                />
-                <TopicsInList title="Visual pillars" topics={visualTopics} />
+          <PrototypeNavTabs
+            activeTab={activeTab}
+            homePanel={
+              <div className="space-y-6">
+                <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+                  <TopicsInSquares
+                    note="Locked for Day 1"
+                    title="Stack direction"
+                    topics={stackTopics}
+                  />
+                  <TopicsInList title="Visual pillars" topics={visualTopics} />
+                </div>
+
+                <article className="panel-cut max-w-4xl">
+                  <p className="text-xs uppercase tracking-[0.28em] text-(--color-accent)">
+                    Active palette
+                  </p>
+                  <p className="mt-4 text-sm leading-7 text-(--color-text) md:text-base">
+                    The current sandbox uses{" "}
+                    <span className="text-(--color-cyan)">#800080</span> for
+                    structural glow and borders,{" "}
+                    <span className="text-(--color-cyan)">#df024a</span> as
+                    the dominant punk text color, and{" "}
+                    <span className="text-(--color-cyan)">#0dcdcd</span> for
+                    selective highlight words and indicator accents.
+                  </p>
+                </article>
               </div>
-
-              <article className="panel-cut max-w-4xl">
-                <p className="text-xs uppercase tracking-[0.28em] text-(--color-accent)">
-                  Active palette
-                </p>
-                <p className="mt-4 text-sm leading-7 text-(--color-text) md:text-base">
-                  The current sandbox uses{" "}
-                  <span className="text-(--color-cyan)">#800080</span> for
-                  structural glow and borders,{" "}
-                  <span className="text-(--color-cyan)">#df024a</span> as
-                  the dominant punk text color, and{" "}
-                  <span className="text-(--color-cyan)">#0dcdcd</span> for
-                  selective highlight words and indicator accents.
-                </p>
-              </article>
-            </div>
-          }
-          simpleAssetsPanel={<SimpleAssetsShowcase />}
-        />
+            }
+            simpleAssetsPanel={<SimpleAssetsShowcase />}
+          />
+        </div>
       </section>
     </main>
   );

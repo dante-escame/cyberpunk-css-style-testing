@@ -1,10 +1,9 @@
-"use client";
-
-import { useState } from "react";
+import Link from "next/link";
 
 type TabId = "home" | "simple-assets";
 
 type PrototypeNavTabsProps = {
+  activeTab: TabId;
   homePanel: React.ReactNode;
   simpleAssetsPanel: React.ReactNode;
 };
@@ -23,25 +22,16 @@ const tabs: Array<{ id: TabId; label: string; hint: string }> = [
 ];
 
 export function PrototypeNavTabs({
+  activeTab,
   homePanel,
   simpleAssetsPanel
 }: PrototypeNavTabsProps) {
-  const [activeTab, setActiveTab] = useState<TabId>("home");
-
   return (
     <section className="panel-cut space-y-5">
       <div className="space-y-4">
         <div className="space-y-2">
-          <p className="text-xs uppercase tracking-[0.28em] text-(--color-accent)">
-            Day 2 prototype navigation
-          </p>
-          <h2 className="text-2xl font-semibold uppercase tracking-[0.14em] text-(--color-heading)">
-            Server-first tab shell
-          </h2>
           <p className="max-w-2xl text-sm leading-7 text-(--color-text) md:text-base">
-            The tab interaction is the only client-side boundary. Each tab
-            panel stays server-rendered so the page demonstrates the current
-            component rules in practice.
+            The tab interaction is handled via routing, fetching server-rendered tabs.
           </p>
         </div>
 
@@ -54,7 +44,7 @@ export function PrototypeNavTabs({
             const isActive = activeTab === tab.id;
 
             return (
-              <button
+              <Link
                 key={tab.id}
                 aria-controls={`${tab.id}-panel`}
                 aria-selected={isActive}
@@ -65,10 +55,9 @@ export function PrototypeNavTabs({
                     ? "border-(--color-cyan) bg-[rgba(13,205,205,0.1)] text-(--color-heading) shadow-[0_0_22px_rgba(13,205,205,0.16)]"
                     : "border-(--color-accent)/45 bg-[rgba(128,0,128,0.08)] text-(--color-text) hover:border-(--color-cyan)/55 hover:text-(--color-heading)"
                 ].join(" ")}
+                href={tab.id === "home" ? "/" : `?tab=${tab.id}`}
                 id={`${tab.id}-tab`}
-                onClick={() => setActiveTab(tab.id)}
                 role="tab"
-                type="button"
               >
                 <span className="block text-xs uppercase tracking-[0.32em] text-(--color-cyan)">
                   {tab.label}
@@ -76,7 +65,7 @@ export function PrototypeNavTabs({
                 <span className="mt-2 block text-[11px] uppercase tracking-[0.18em] text-current/80">
                   {tab.hint}
                 </span>
-              </button>
+              </Link>
             );
           })}
         </div>
