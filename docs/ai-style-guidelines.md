@@ -8,11 +8,13 @@ This file is the canonical visual reference for AI coding agents working in this
 - Punk text color: `#df024a`
 - Cyan highlight color: `#0dcdcd`
 - Primary title color: `#f6d8ff`
+- Neuromancer gold: `#f9f338`
 
 ## Color Usage Rules
 - Use `#800080` as the anchor color for the interface mood. Build darker and lighter purple variations from it for backgrounds, borders, glows, and layered surfaces.
 - Use `#df024a` as the main punk-forward accent, especially for important text, labels, emphasis, active states, and high-attention UI details.
 - Use `#0dcdcd` sparingly for word-level highlights, small callouts, micro-emphasis, or contrast accents inside copy and UI labels.
+- Use `#f9f338` (Neuromancer gold) for high-tier status indicators, special protocol alerts, and premium UI accents.
 - Use `#f6d8ff` as the default title and major heading color. This is the reference tone used by the `Cyberpunk style test sandbox` title and should be treated as the standard heading color unless the user asks for a different variant.
 - Prefer dark purple or near-black surfaces with moderate opacity so panels feel layered and atmospheric.
 - Avoid overloading the UI with too many accent colors at the same visual priority. Purple should carry the structure, pink-red should carry emphasis, and cyan should stay selective.
