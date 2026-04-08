@@ -1,12 +1,13 @@
 import Link from "next/link";
 
-type TabId = "home" | "simple-assets" | "text-patterns";
+type TabId = "home" | "simple-assets" | "text-patterns" | "ui-elements";
 
 type PrototypeNavTabsProps = {
   activeTab: TabId;
   homePanel: React.ReactNode;
   simpleAssetsPanel: React.ReactNode;
   textPatternsPanel: React.ReactNode;
+  uiElementsPanel: React.ReactNode;
 };
 
 const tabs: Array<{ id: TabId; label: string; hint: string }> = [
@@ -24,6 +25,11 @@ const tabs: Array<{ id: TabId; label: string; hint: string }> = [
     id: "text-patterns",
     label: "Text Patterns",
     hint: "Content typography test"
+  },
+  {
+    id: "ui-elements",
+    label: "UI Elements",
+    hint: "Interactive component library"
   }
 ];
 
@@ -31,7 +37,8 @@ export function PrototypeNavTabs({
   activeTab,
   homePanel,
   simpleAssetsPanel,
-  textPatternsPanel
+  textPatternsPanel,
+  uiElementsPanel
 }: PrototypeNavTabsProps) {
   return (
     <section className="panel-cut space-y-5">
@@ -87,7 +94,9 @@ export function PrototypeNavTabs({
           ? homePanel
           : activeTab === "simple-assets"
             ? simpleAssetsPanel
-            : textPatternsPanel}
+            : activeTab === "text-patterns"
+              ? textPatternsPanel
+              : uiElementsPanel}
       </div>
     </section>
   );

@@ -1,6 +1,7 @@
 import { PrototypeNavTabs } from "../src/components/prototype-nav-tabs";
 import { SimpleAssetsShowcase } from "../src/components/simple-assets-showcase";
 import { TextPatternsShowcase } from "../src/components/text-patterns-showcase";
+import { UIElementsShowcase } from "../src/components/ui-elements-showcase";
 import { TopicsInList } from "../src/components/topics-in-list";
 import { TopicsInSquares } from "../src/components/topics-in-squares";
 
@@ -29,7 +30,9 @@ export default async function Home({
     ? "simple-assets"
     : tab === "text-patterns"
       ? "text-patterns"
-      : "home") as "home" | "simple-assets" | "text-patterns";
+      : tab === "ui-elements"
+        ? "ui-elements"
+        : "home") as "home" | "simple-assets" | "text-patterns" | "ui-elements";
 
   return (
     <main className="min-h-screen text-(--color-text)">
@@ -72,15 +75,18 @@ export default async function Home({
                     <span className="text-(--color-cyan)">#800080</span> for
                     structural glow and borders,{" "}
                     <span className="text-(--color-cyan)">#df024a</span> as
-                    the dominant punk text color, and{" "}
+                    the dominant punk text color,{" "}
                     <span className="text-(--color-cyan)">#0dcdcd</span> for
-                    selective highlight words and indicator accents.
+                    selective highlight words, and{" "}
+                    <span className="text-(--color-cyan)">#f9f338</span> for
+                    high-tier status indicators.
                   </p>
                 </article>
               </div>
             }
             simpleAssetsPanel={<SimpleAssetsShowcase />}
             textPatternsPanel={<TextPatternsShowcase />}
+            uiElementsPanel={<UIElementsShowcase />}
           />
         </div>
       </section>
