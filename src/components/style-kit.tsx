@@ -153,7 +153,11 @@ export function StyleCardGrid({
           key={item.id ?? item.title}
           className="border border-(--color-accent)/35 bg-[rgba(128,0,128,0.08)] p-4 shadow-[0_0_18px_rgba(128,0,128,0.14)]"
         >
-          {item.preview ? <div className="h-20">{item.preview}</div> : null}
+          {item.preview ? (
+            <div className="h-20 overflow-hidden border border-(--color-accent)/30 bg-[rgba(10,3,14,0.7)]">
+              <div className="h-full w-full">{item.preview}</div>
+            </div>
+          ) : null}
           <div className={joinClasses(item.preview ? "mt-4" : undefined, "space-y-2")}>
             <div className="flex items-center gap-2">
               <p className="text-xs uppercase tracking-[0.24em] text-(--color-heading)">

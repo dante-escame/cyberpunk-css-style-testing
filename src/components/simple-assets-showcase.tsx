@@ -47,6 +47,12 @@ const defaultPalette = [
     value: "#f6d8ff",
     gradient: "linear-gradient(135deg, #6b4b73 0%, #f6d8ff 48%, #ffffff 100%)",
     usage: "Headings, bright focal text"
+  },
+  {
+    name: "Neuromancer Gold",
+    value: "#f9f338",
+    gradient: "linear-gradient(135deg, #3f3902 0%, #f9f338 52%, #fff7a0 100%)",
+    usage: "High-tier states, premium accents"
   }
 ];
 
@@ -96,13 +102,14 @@ export function SimpleAssetsShowcase({
             meta: (
               <span
                 aria-label={`${color.name} base color`}
-                className="h-3 w-3"
+                className="inline-block h-3 w-3 shrink-0 rounded-full border border-white/20"
                 style={{ backgroundColor: color.value }}
               />
             ),
             preview: (
               <div
                 aria-hidden="true"
+                className="h-full w-full"
                 style={{ backgroundImage: color.gradient }}
               />
             )
