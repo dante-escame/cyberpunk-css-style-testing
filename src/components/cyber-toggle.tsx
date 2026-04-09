@@ -5,6 +5,7 @@ import React, { useState } from "react";
 interface CyberToggleProps {
   label?: string;
   defaultChecked?: boolean;
+  checked?: boolean;
   onChange?: (checked: boolean) => void;
   className?: string;
 }
@@ -12,14 +13,18 @@ interface CyberToggleProps {
 export function CyberToggle({
   label,
   defaultChecked = false,
+  checked,
   onChange,
-  className = "",
+  className = ""
 }: CyberToggleProps) {
-  const [checked, setChecked] = useState(defaultChecked);
+  const [internalChecked, setInternalChecked] = useState(defaultChecked);
+  const isChecked = checked ?? internalChecked;
 
   const handleToggle = () => {
-    const newChecked = !checked;
-    setChecked(newChecked);
+    const newChecked = !isChecked;
+    if (checked === undefined) {
+      setInternalChecked(newChecked);
+    }
     onChange?.(newChecked);
   };
 
@@ -33,18 +38,19 @@ export function CyberToggle({
       <button
         onClick={handleToggle}
         className={`relative w-12 h-6 border-2 transition-all duration-300 outline-none focus:ring-1 focus:ring-(--color-cyan) cursor-pointer ${
-          checked
+          isChecked
             ? "border-(--color-cyan) bg-(--color-cyan)/10 shadow-[0_0_15px_rgba(13,205,205,0.3)]"
             : "border-(--color-border) bg-(--color-bg-elevated)"
         }`}
         style={{
           clipPath: "polygon(0 0, 100% 0, 100% 75%, 85% 100%, 0 100%)",
         }}
-        aria-pressed={checked}
+        aria-pressed={isChecked}
+        type="button"
       >
         <div
           className={`absolute top-1 left-1 w-4 h-3 transition-all duration-300 ${
-            checked
+            isChecked
               ? "translate-x-6 bg-(--color-cyan) shadow-[0_0_10px_rgba(13,205,205,0.8)]"
               : "bg-(--color-border) translate-x-0"
           }`}

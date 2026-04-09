@@ -1,51 +1,33 @@
 import Link from "next/link";
 
-type TabId = "home" | "simple-assets" | "text-patterns" | "ui-elements";
-
-type PrototypeNavTabsProps = {
-  activeTab: TabId;
-  homePanel: React.ReactNode;
-  simpleAssetsPanel: React.ReactNode;
-  textPatternsPanel: React.ReactNode;
-  uiElementsPanel: React.ReactNode;
+type TabDefinition = {
+  id: string;
+  label: string;
+  hint: string;
+  href: string;
 };
 
-const tabs: Array<{ id: TabId; label: string; hint: string }> = [
-  {
-    id: "home",
-    label: "Home",
-    hint: "Server-rendered overview"
-  },
-  {
-    id: "simple-assets",
-    label: "Simple Assets",
-    hint: "Server-rendered token lab"
-  },
-  {
-    id: "text-patterns",
-    label: "Text Patterns",
-    hint: "Content typography test"
-  },
-  {
-    id: "ui-elements",
-    label: "UI Elements",
-    hint: "Interactive component library"
-  }
-];
+type PrototypeNavTabsProps = {
+  activeTab: string;
+  description?: React.ReactNode;
+  tabs: TabDefinition[];
+  panels: Record<string, React.ReactNode>;
+};
 
 export function PrototypeNavTabs({
   activeTab,
-  homePanel,
-  simpleAssetsPanel,
-  textPatternsPanel,
-  uiElementsPanel
+  description = "The tab interaction is handled via routing, fetching server-rendered tabs.",
+  tabs,
+  panels
 }: PrototypeNavTabsProps) {
+  const activePanel = panels[activeTab] ?? panels[tabs[0]?.id];
+
   return (
     <section className="panel-cut space-y-5">
       <div className="space-y-4">
         <div className="space-y-2">
           <p className="max-w-2xl text-sm leading-7 text-(--color-text) md:text-base">
-            The tab interaction is handled via routing, fetching server-rendered tabs.
+            {description}
           </p>
         </div>
 
@@ -69,7 +51,7 @@ export function PrototypeNavTabs({
                     ? "border-(--color-cyan) bg-[rgba(13,205,205,0.1)] text-(--color-heading) shadow-[0_0_22px_rgba(13,205,205,0.16)]"
                     : "border-(--color-accent)/45 bg-[rgba(128,0,128,0.08)] text-(--color-text) hover:border-(--color-cyan)/55 hover:text-(--color-heading)"
                 ].join(" ")}
-                href={tab.id === "home" ? "/" : `?tab=${tab.id}`}
+                href={tab.href}
                 id={`${tab.id}-tab`}
                 role="tab"
               >
@@ -85,19 +67,13 @@ export function PrototypeNavTabs({
         </div>
       </div>
 
-      <div
-        aria-labelledby={`${activeTab}-tab`}
-        id={`${activeTab}-panel`}
-        role="tabpanel"
-      >
-        {activeTab === "home"
-          ? homePanel
-          : activeTab === "simple-assets"
-            ? simpleAssetsPanel
-            : activeTab === "text-patterns"
-              ? textPatternsPanel
-              : uiElementsPanel}
-      </div>
+        <div
+          aria-labelledby={`${activeTab}-tab`}
+          id={`${activeTab}-panel`}
+          role="tabpanel"
+        >
+          {activePanel}
+        </div>
     </section>
   );
 }

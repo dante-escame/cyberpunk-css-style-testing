@@ -1,24 +1,35 @@
+import { HomeShowcase } from "../src/components/home-showcase";
 import { PrototypeNavTabs } from "../src/components/prototype-nav-tabs";
 import { SimpleAssetsShowcase } from "../src/components/simple-assets-showcase";
 import { TextPatternsShowcase } from "../src/components/text-patterns-showcase";
 import { UIElementsShowcase } from "../src/components/ui-elements-showcase";
-import { TopicsInList } from "../src/components/topics-in-list";
-import { TopicsInSquares } from "../src/components/topics-in-squares";
 
-const stackTopics = [
-  "Next.js 16 App Router",
-  "Tailwind CSS v4",
-  "Docker standalone build",
-  "Vercel deployment",
-  "MongoDB Atlas integration"
-];
-
-const visualTopics = [
-  "Core purple structural framing",
-  "Punk-red text emphasis",
-  "Selective cyan word highlights",
-  "Mono-forward technical typography"
-];
+const prototypeTabs = [
+  {
+    id: "home",
+    label: "Home",
+    hint: "Server-rendered overview",
+    href: "/"
+  },
+  {
+    id: "simple-assets",
+    label: "Simple Assets",
+    hint: "Server-rendered token lab",
+    href: "?tab=simple-assets"
+  },
+  {
+    id: "text-patterns",
+    label: "Text Patterns",
+    hint: "Content typography test",
+    href: "?tab=text-patterns"
+  },
+  {
+    id: "ui-elements",
+    label: "UI Elements",
+    hint: "Interactive component library",
+    href: "?tab=ui-elements"
+  }
+] as const;
 
 export default async function Home({
   searchParams
@@ -55,38 +66,13 @@ export default async function Home({
 
           <PrototypeNavTabs
             activeTab={activeTab}
-            homePanel={
-              <div className="space-y-6">
-                <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
-                  <TopicsInSquares
-                    note="Locked for Day 1"
-                    title="Stack direction"
-                    topics={stackTopics}
-                  />
-                  <TopicsInList title="Visual pillars" topics={visualTopics} />
-                </div>
-
-                <article className="panel-cut max-w-4xl">
-                  <p className="text-xs uppercase tracking-[0.28em] text-(--color-accent)">
-                    Active palette
-                  </p>
-                  <p className="mt-4 text-sm leading-7 text-(--color-text) md:text-base">
-                    The current sandbox uses{" "}
-                    <span className="text-(--color-cyan)">#800080</span> for
-                    structural glow and borders,{" "}
-                    <span className="text-(--color-cyan)">#df024a</span> as
-                    the dominant punk text color,{" "}
-                    <span className="text-(--color-cyan)">#0dcdcd</span> for
-                    selective highlight words, and{" "}
-                    <span className="text-(--color-cyan)">#f9f338</span> for
-                    high-tier status indicators.
-                  </p>
-                </article>
-              </div>
-            }
-            simpleAssetsPanel={<SimpleAssetsShowcase />}
-            textPatternsPanel={<TextPatternsShowcase />}
-            uiElementsPanel={<UIElementsShowcase />}
+            tabs={prototypeTabs.map((tab) => ({ ...tab }))}
+            panels={{
+              home: <HomeShowcase />,
+              "simple-assets": <SimpleAssetsShowcase />,
+              "text-patterns": <TextPatternsShowcase />,
+              "ui-elements": <UIElementsShowcase />
+            }}
           />
         </div>
       </section>

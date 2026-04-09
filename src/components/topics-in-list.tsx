@@ -1,11 +1,18 @@
+import { StylePanel } from "./style-kit";
+
 type TopicsInListProps = {
   title: string;
   topics: string[];
+  className?: string;
 };
 
-export function TopicsInList({ title, topics }: TopicsInListProps) {
+export function TopicsInList({
+  title,
+  topics,
+  className
+}: TopicsInListProps) {
   return (
-    <article className="panel-cut panel-cut-cyan space-y-5">
+    <StylePanel className={className} tone="cyan">
       <h2 className="text-xl font-semibold uppercase tracking-[0.18em] text-(--color-heading)">
         {title}
       </h2>
@@ -20,6 +27,6 @@ export function TopicsInList({ title, topics }: TopicsInListProps) {
           </div>
         ))}
       </div>
-    </article>
+    </StylePanel>
   );
 }

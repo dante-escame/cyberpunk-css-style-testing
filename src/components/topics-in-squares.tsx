@@ -1,16 +1,20 @@
+import { StylePanel } from "./style-kit";
+
 type TopicsInSquaresProps = {
   title: string;
   note?: string;
   topics: string[];
+  className?: string;
 };
 
 export function TopicsInSquares({
   title,
   note,
-  topics
+  topics,
+  className
 }: TopicsInSquaresProps) {
   return (
-    <article className="panel-cut panel-cut-cyan space-y-5">
+    <StylePanel className={className} tone="cyan">
       <div className="flex items-center justify-between gap-4">
         <h2 className="text-xl font-semibold uppercase tracking-[0.18em] text-(--color-heading)">
           {title}
@@ -31,6 +35,6 @@ export function TopicsInSquares({
           </div>
         ))}
       </div>
-    </article>
+    </StylePanel>
   );
 }

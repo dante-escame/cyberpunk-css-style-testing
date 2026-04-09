@@ -1,14 +1,25 @@
 import React from "react";
 import { TextPatternBlock } from "./text-pattern-block";
 
-export function TextPatternsShowcase() {
-  return (
-    <div className="grid gap-8">
-      <TextPatternBlock
-        subtitle="Typography Test 01"
-        title="Heading hierarchy & paragraphs"
-        variant="cyan"
-      >
+type TextPatternItem = {
+  title: string;
+  subtitle?: string;
+  variant?: "default" | "cyan";
+  content: React.ReactNode;
+};
+
+type TextPatternsShowcaseProps = {
+  items?: TextPatternItem[];
+  className?: string;
+};
+
+const defaultItems: TextPatternItem[] = [
+  {
+    subtitle: "Typography Test 01",
+    title: "Heading hierarchy & paragraphs",
+    variant: "cyan",
+    content: (
+      <>
         <p>
           The cyberpunk aesthetic relies heavily on high-contrast typography.
           By combining <span className="text-(--color-cyan)">monospaced fonts</span> with
@@ -25,13 +36,15 @@ export function TextPatternsShowcase() {
           long-form technical data or narrative descriptions are easy to parse
           under high-glare conditions.
         </p>
-      </TextPatternBlock>
-
-      <TextPatternBlock
-        subtitle="Typography Test 02"
-        title="Cyan accent & word highlights"
-        variant="cyan"
-      >
+      </>
+    )
+  },
+  {
+    subtitle: "Typography Test 02",
+    title: "Cyan accent & word highlights",
+    variant: "cyan",
+    content: (
+      <>
         <p>
           Selective use of <span className="text-(--color-cyan)">cyan</span> allows
           us to draw the user's eye to critical information without overwhelming
@@ -48,12 +61,14 @@ export function TextPatternsShowcase() {
           and this paragraph. It uses standard Tailwind spacing tokens to ensure
           consistency across the entire dashboard.
         </p>
-      </TextPatternBlock>
-
-      <TextPatternBlock
-        subtitle="Typography Test 03"
-        title="Technical data & lists"
-      >
+      </>
+    )
+  },
+  {
+    subtitle: "Typography Test 03",
+    title: "Technical data & lists",
+    content: (
+      <>
         <p>
           Data density is a hallmark of the genre. Here we test how lists and
           small-caps labels behave within a content block:
@@ -75,7 +90,27 @@ export function TextPatternsShowcase() {
         <p className="pt-2 text-xs opacity-60">
           // End of technical summary. All systems nominal.
         </p>
-      </TextPatternBlock>
+      </>
+    )
+  }
+];
+
+export function TextPatternsShowcase({
+  items = defaultItems,
+  className
+}: TextPatternsShowcaseProps) {
+  return (
+    <div className={`grid gap-8 ${className ?? ""}`}>
+      {items.map((item) => (
+        <TextPatternBlock
+          key={`${item.subtitle ?? item.title}-${item.title}`}
+          subtitle={item.subtitle}
+          title={item.title}
+          variant={item.variant}
+        >
+          {item.content}
+        </TextPatternBlock>
+      ))}
     </div>
   );
 }

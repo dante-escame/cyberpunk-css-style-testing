@@ -8,7 +8,9 @@ interface CyberSliderProps {
   max?: number;
   step?: number;
   defaultValue?: number;
+  value?: number;
   onChange?: (value: number) => void;
+  formatValue?: (value: number) => string;
   className?: string;
 }
 
@@ -18,14 +20,19 @@ export function CyberSlider({
   max = 100,
   step = 1,
   defaultValue = 50,
+  value,
   onChange,
-  className = "",
+  formatValue = (currentValue) => currentValue.toString().padStart(3, "0"),
+  className = ""
 }: CyberSliderProps) {
-  const [value, setValue] = useState(defaultValue);
+  const [internalValue, setInternalValue] = useState(defaultValue);
+  const currentValue = value ?? internalValue;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = parseInt(e.target.value, 10);
-    setValue(newValue);
+    if (value === undefined) {
+      setInternalValue(newValue);
+    }
     onChange?.(newValue);
   };
 
@@ -36,7 +43,7 @@ export function CyberSlider({
           {label}
         </label>
         <span className="text-xs font-black text-(--color-cyan) border-b border-(--color-cyan)/30 px-2">
-          {value.toString().padStart(3, "0")}
+          {formatValue(currentValue)}
         </span>
       </div>
       <div className="relative h-6 flex items-center">
@@ -46,7 +53,7 @@ export function CyberSlider({
         {/* Fill */}
         <div
           className="absolute left-0 h-1 bg-gradient-to-r from-(--color-accent) to-(--color-cyan) shadow-[0_0_10px_rgba(13,205,205,0.4)]"
-          style={{ width: `${((value - min) / (max - min)) * 100}%` }}
+          style={{ width: `${((currentValue - min) / (max - min)) * 100}%` }}
         />
 
         <input
@@ -54,7 +61,7 @@ export function CyberSlider({
           min={min}
           max={max}
           step={step}
-          value={value}
+          value={currentValue}
           onChange={handleChange}
           className="absolute inset-x-0 w-full h-6 appearance-none bg-transparent cursor-pointer z-10 
             [&::-webkit-slider-thumb]:appearance-none 
