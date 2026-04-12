@@ -44,6 +44,7 @@ This repository is a Next.js 16 App Router sandbox used to define and test the c
 
 ## AI Style Reference
 - When generating or editing UI, use [docs/ai-style-guidelines.md](/docs/ai-style-guidelines.md) as the canonical source for palette and typography details.
+- When discussing, adding, or reviewing automated tests, use [docs/tests-guidelines.md](/docs/tests-guidelines.md) as the default testing baseline for this repository.
 - When writing hero titles or headings, treat the current light heading tone used by the main page title as the default pattern.
 - Before creating any components, decide between server-side and client-side based on [docs/server-side-or-client-side.md](/docs/server-side-or-client-side.md).
 - When creating server-side components, follow the guidelines at [docs/server-side-components-guidelines.md](/docs/server-side-components-guidelines.md).
